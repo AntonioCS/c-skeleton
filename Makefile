@@ -5,6 +5,7 @@ LDFLAGS=
 LDLIBS=
 CC=gcc
 SRC=$(wildcard ./src/*.c)
+#https://www.gnu.org/software/make/manual/html_node/Text-Functions.html
 OBJ=$(subst ./src, ./src/obj, $(patsubst %.c, %.o, $(SRC)))
 
 .PHONY: all clean
