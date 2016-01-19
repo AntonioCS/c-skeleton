@@ -16,6 +16,6 @@ $(TARGET): $(OBJ)
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(LDLIBS)
 	
 $(OBJ):	$(SRC)
-	$(CC) -c -o $@ $^ 
+	$(CC) $(CFLAGS) -c -o $@ $^
 clean:
 	rm -f $(TARGET) $(OBJ)
