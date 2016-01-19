@@ -1,18 +1,20 @@
-BIN=c-skeleton
-
+#https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html
+TARGET=c-skeleton
 CFLAGS=-std=c11 -Wall -Werror -g
 LDFLAGS=
 LDLIBS=
-
-SOURCES=$(wildcard *.c)
-OBJECTS=$(patsubst %.c, %.o, $(SOURCES))
+CC=gcc
+SRC=$(wildcard ./src/*.c)
+OBJ=$(subst ./src, ./src/obj, $(patsubst %.c, %.o, $(SRC)))
 
 .PHONY: all clean
 
-all: $(BIN)
+all: $(TARGET)
 
-$(BIN): $(OBJECTS)
+$(TARGET): $(OBJ)
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(LDLIBS)
-
+	
+$(OBJ):	$(SRC)
+	$(CC) -c -o $@ $^ 
 clean:
-	rm -f $(BIN) $(OBJECTS)
+	rm -f $(TARGET) $(OBJ)
