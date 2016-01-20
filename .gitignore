@@ -1,3 +1,4 @@
 c-skeleton
-./src/obj/*.o
+src/obj/*
+build/*
 nbproject/
